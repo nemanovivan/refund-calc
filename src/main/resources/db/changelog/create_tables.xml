@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="add customer and account table" author="Sokolova">
+        <sql>
+            CREATE TABLE if not exists customer (
+            id bigserial PRIMARY KEY,
+            surname varchar NOT NULL,
+            name varchar,
+            phone varchar,
+            telegram_name varchar,
+            mail varchar
+            );
+
+            CREATE TABLE if not exists account (
+            id bigserial PRIMARY KEY,
+            customer_id int NOT NULL,
+            deposit int NOT NULL,
+            full_cost int NOT NULL,
+            refund int,
+            purchase_date date NOT NULL DEFAULT CURRENT_DATE,
+            FOREIGN KEY (customer_id) REFERENCES customer (id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

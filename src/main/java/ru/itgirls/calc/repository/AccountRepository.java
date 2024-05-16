@@ -7,5 +7,5 @@ import ru.itgirls.calc.model.entity.Account;
 import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, Long>, JpaSpecificationExecutor<Account> {
-//   Optional<Account> findAccountByUserId(Long userId);
+   Optional<Account> findAccountByUserId(Long userId);
 }
